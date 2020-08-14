@@ -33,8 +33,16 @@ String user_password = request.getParameter("userPassword");//
 
 		rs = stmt.executeQuery(query);
 		if (rs.next()) {
-			
-			response.sendRedirect("../index.jsp");
+			%>
+			<form id="sample_form" action="../index.jsp" method="post">
+			<input name="userID" value=<%=user_id %> >
+			<input type="submit" value="Submit">
+			</form>
+			<script type="text/javascript">
+this.document.getElementById("sample_form").submit();
+</script>
+			<% 
+			/* response.sendRedirect("../index.jsp"); */
 	%>
 	<table border="1">
 		<tr>
