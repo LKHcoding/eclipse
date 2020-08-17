@@ -27,7 +27,7 @@
 <button onclick="location.href='viewMemberList.jsp'">전체사용자보기</button>
 <!-- <button onclick="location.href='viewMember.jsp'">유저검색</button> -->
 <button onclick="location.href='insert/insertForm.jsp'">사용자 추가</button>
-<!-- <button onclick="location.href='update/updateForm.jsp'">수정</button> -->
+<!-- <button onclick="location.href='update/updateForm.jsp'">수정</button>얍얍 -->
 <%=memberID %>님 환영합니다.
 </body>
 </html>
