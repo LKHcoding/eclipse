@@ -18,6 +18,7 @@
 			<td>아이디</td>
 			<td>이메일</td>
 		</tr>
+		
 		<%
 			// 1. JDBC 드라이버 로딩
 		Class.forName("com.mysql.jdbc.Driver");
@@ -31,7 +32,7 @@
 			String dbUser = "root";
 			String dbPass = "rootroot";
 
-			String query = "select * from MEMBER order by MEMBERID";
+			String query = "select * from member order by memberid";
 
 			// 2. 데이터베이스 커넥션 생성
 			conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
@@ -46,7 +47,7 @@
 			while (rs.next()) {
 		%>
 		<tr>
-			<td><%=rs.getString("NAME")%></td>
+			<td><a href="update/updateForm.jsp?memberID=<%=rs.getString("memberid")%>"><%=rs.getString("name")%></a></td>
 			<td><%=rs.getString("MEMBERID")%></td>
 			<td><%=rs.getString("EMAIL")%></td>
 		</tr>
@@ -77,7 +78,10 @@
 		}
 		%>
 	</table>
-	<input type="text">
-	<button>검색</button>
+	<form action="viewMember.jsp">
+	<input type="text" name="memberID" placeholder="검색할 ID를 입력하세요.">
+	<input type="submit" value="검색">
+	</form>
+	
 </body>
 </html>
