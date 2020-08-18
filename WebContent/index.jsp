@@ -9,12 +9,22 @@
 
 <%
 	String memberID = request.getParameter("userID");
+
+
 	if(memberID == null){
 		%>
-		<script>
+		<!-- <script>
+		window.location = 'login/loginForm.jsp';
+		</script> -->
+		<%
+	}
+	
+	if(session.getAttribute("user_id") == null){
+		%>
+		 <script>
 		window.location = 'login/loginForm.jsp';
 		</script>
-		<%
+		<%	
 	}
 %>
 <!DOCTYPE html>
@@ -29,5 +39,13 @@
 <button onclick="location.href='insert/insertForm.jsp'">사용자 추가</button>
 <!-- <button onclick="location.href='update/updateForm.jsp'">수정</button>얍얍 -->
 <%=memberID %>님 환영합니다.
+<script type="text/javascript">
+ function logout(){
+	 <% session.invalidate(); %>
+	 alert("로그아웃되었습니다.");
+	 window.location = 'login/loginForm.jsp';
+ }
+</script>
+<button onclick="logout();">로그아웃</button>
 </body>
 </html>

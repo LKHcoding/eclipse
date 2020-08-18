@@ -41,6 +41,7 @@ String user_password = request.getParameter("userPassword");//
 		rs = pstmt.executeQuery();
 		/* rs = pstmt.executeQuery(query); */
 		if (rs.next()) {
+			session.setAttribute("user_id", user_id);
 	%>
 	<form id="sample_form" action="../index.jsp" method="post">
 		<input name="userID" value=<%=user_id%>> <input
