@@ -41,36 +41,20 @@ String user_password = request.getParameter("userPassword");//
 		rs = pstmt.executeQuery();
 		/* rs = pstmt.executeQuery(query); */
 		if (rs.next()) {
-			session.setAttribute("user_id", user_id);
+			
+			if(user_id.equals(rs.getString("memberid")) && user_password.equals(rs.getString("password")))
+			{
+				session.setAttribute("user_id", user_id);
+				session.setAttribute("user_pw", user_password);
+				response.sendRedirect("../index.jsp");
+			} else if (user_id.equals(rs.getString("memberid"))) {
+				out.println("<script>alert('비밀번호가 틀렸습니다.'); history.back();</script>");
+			} else if (user_password.equals(rs.getString("password"))) {
+				out.println("<script>alert('아이디가 틀렸습니다.'); history.back();</script>");
+			} else {
+				out.println("<script>alert('아이디와 비밀번호가 틀렸습니다.'); history.back();</script>");
+			}
 	%>
-	<form id="sample_form" action="../index.jsp" method="post">
-		<input name="userID" value=<%=user_id%>> <input
-			type="submit" value="Submit">
-	</form>
-	<script type="text/javascript">
-		this.document.getElementById("sample_form").submit();
-	</script>
-	<%
-		/* response.sendRedirect("../index.jsp"); */
-	%>
-	<table border="1">
-		<tr>
-			<td>아이디</td>
-			<td><%=user_id%></td>
-		</tr>
-		<tr>
-			<td>암호</td>
-			<td><%=rs.getString("password")%></td>
-		</tr>
-		<tr>
-			<td>이름</td>
-			<td><%=rs.getString("name")%></td>
-		</tr>
-		<tr>
-			<td>이메일</td>
-			<td><%=rs.getString("email")%></td>
-		</tr>
-	</table>
 	<%
 		} else {
 	%>
@@ -80,7 +64,6 @@ String user_password = request.getParameter("userPassword");//
 		window.location = 'loginForm.jsp';
 	</script>
 
-	<%-- <% response.sendRedirect("loginForm.jsp"); %> --%>
 
 	<%=user_id%>에 해당하는 정보가 존재하지 않습니다.
 

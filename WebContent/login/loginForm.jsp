@@ -9,6 +9,7 @@
 		text1 = document.getElementById("user_ID").value;
 		if (text1.includes("-")) {
 			alert("인젝션시도하지마라");
+			location.reload(true);
 		}
 	}
 </script>
@@ -21,13 +22,13 @@
 		ID : <input type="text" name="userID" size="20" id="user_ID"> Password : <input type="password" name="userPassword" size="20"> <input type="submit" value="로그인" onclick="event123();">
 	</form>
 	<%
-		}
-		else{
-			%>
-			<script>
-		window.location = '../index.jsp?userID='+session.getAttribute("user_id");
+		} else {
+	%>
+	<script>
+		window.location = '../index.jsp?userID='
+				+ session.getAttribute("user_id");
 	</script>
-			<% 
+	<%
 		}
 	%>
 </body>
