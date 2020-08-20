@@ -1,6 +1,15 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <html>
 <head>
+<%
+	if (session.getAttribute("user_id") == null) {
+%>
+<script>
+	window.location = '/chap14/login/loginForm.jsp';
+</script>
+<%
+	}
+%>
 <title>MEMBER 테이블 레코드 삽입</title>
 </head>
 <body>

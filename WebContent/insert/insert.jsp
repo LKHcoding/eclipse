@@ -48,7 +48,11 @@ try {
 <head>
 <title>삽입</title>
 </head>
-<body>MEMBER 테이블에 새로운 레코드를 삽입했습니다
+<body>
+<script>
+	alert("UserList에 새로운 사용자 추가 성공");
+	window.location = '/chap14/index.jsp';
+</script>
 
 </body>
 </html>
