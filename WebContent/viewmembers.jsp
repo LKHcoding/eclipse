@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ page import="java.sql.DriverManager"%>
 <%@ page import="java.sql.Connection"%>
@@ -7,7 +7,8 @@
 <%@ page import="java.sql.SQLException"%>
 
 <%
-	String memberID = request.getParameter("memberID");
+	request.setCharacterEncoding("UTF-8");
+String memberID = request.getParameter("memberID");
 %>
 
 <!DOCTYPE html>
@@ -135,7 +136,7 @@
 					String jdbcDriver = "jdbc:mysql://localhost:3306/forjsp?" + "useUnicode=true&characterEncoding=utf8";
 					String dbUser = "root";
 					String dbPass = "rootroot";
-					String query = "select * from MEMBER where MEMBERID = '" + memberID + "'";
+					String query = "select * from member where memberid = '" + memberID + "'";
 
 					conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 					stmt = conn.createStatement();
@@ -145,13 +146,13 @@
 				%>
 				<div class="table-responsive">
 					<table class="table">
-					<thead>
-						<tr>
-							<th style="border-top: 1px solid blue;">아이디</th>
-							<th style="border-top: 1px solid blue;">이름</th>
-							<th style="border-top: 1px solid blue;">이메일</th>
-						</tr>
-					</thead>
+						<thead>
+							<tr>
+								<th style="border-top: 1px solid blue;">아이디</th>
+								<th style="border-top: 1px solid blue;">이름</th>
+								<th style="border-top: 1px solid blue;">이메일</th>
+							</tr>
+						</thead>
 						<tr>
 							<td><%=memberID%></td>
 							<td><%=rs.getString("NAME")%></td>
