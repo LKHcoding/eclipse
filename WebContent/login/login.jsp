@@ -6,9 +6,15 @@
 <%@ page import="java.sql.PreparedStatement"%>
 <%@ page import="java.sql.SQLException"%>
 
+<jsp:useBean id="LoginInfo" class="JavaBeans.LoginInfo" scope="session"/>
+<jsp:setProperty name="LoginInfo" property="*" />
+<jsp:setProperty name="LoginInfo" property="userPassword"
+				 value="<%= LoginInfo.getUserPassword() %>" />
 <%
-	String user_id = request.getParameter("userID");
-String user_password = request.getParameter("userPassword");//
+String user_id = LoginInfo.getUserID();
+String user_password = LoginInfo.getUserPassword();//
+
+
 %>
 <html>
 <head>
